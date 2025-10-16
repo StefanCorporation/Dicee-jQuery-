@@ -17,7 +17,6 @@ $('.btn').on('click', function() {
     playSound(userChosenColour);
     animatePress(userChosenColour);
     checkAnswer(userClickedPattern.indexOf(userChosenColour));
-    console.log(userClickedPattern, 'user clikc')
 });
 
 
@@ -55,16 +54,16 @@ $(document).on('keypress', function(event) {
             $('#level-title').text('Level 0');
             started = true;
         }
-
+        
         nextSequence();  
-        console.log(gamePattern)
+       
     }
 });
 
 
 function checkAnswer(currentLevel) {
     if (userClickedPattern[currentLevel] === gamePattern[currentLevel]) {
-        console.log('Success a')
+
         if (userClickedPattern.length === gamePattern.length) {
             setTimeout(() => {
                 nextSequence();
@@ -74,7 +73,7 @@ function checkAnswer(currentLevel) {
         }
 
     } else {
-        console.log('wrong')
+
         playSound('wrong');
 
         $('#level-title').text('Game Over, Press A to Restart');
@@ -83,6 +82,8 @@ function checkAnswer(currentLevel) {
         setTimeout(() => {
             $('body').removeClass('game-over');
         }, 200);
+
+        userClickedPattern = [];
 
         startOver();
     }
@@ -95,34 +96,6 @@ function startOver() {
     gamePattern = [];
     started = true;
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
