@@ -51,3 +51,11 @@ body {
   box-shadow: 0 0 20px white;
   background-color: grey;
 }
+
+.mob-button {
+  width: 200px;
+  height: 80px;
+  border-radius: 20%;
+  margin-top: 40px;
+  font-family: 'Press Start 2P', cursive;
+}
