@@ -10,8 +10,8 @@ function playSound(name) {
 
 
 
-
 $('.btn').on('click', function() {
+
     const userChosenColour = this.id;
     userClickedPattern.push(userChosenColour);
     playSound(userChosenColour);
@@ -47,8 +47,25 @@ function nextSequence() {
 let level = 0;
 let started = false;
 
-$(document).on('keypress', function(event) {
 
+
+$('#id-button').on('click', function(event) {      
+
+    if (event.type === 'click') {
+        if (!started) {
+            $('#level-title').text('Level 0');
+            started = true;
+        }
+        
+        nextSequence();  
+       
+    } 
+})
+
+
+
+$(document).on('keypress', function(event) {
+    
     if (event.key === 'A' || event.key === 'a') {
         if (!started) {
             $('#level-title').text('Level 0');
@@ -57,7 +74,8 @@ $(document).on('keypress', function(event) {
         
         nextSequence();  
        
-    }
+    } 
+
 });
 
 
@@ -77,6 +95,7 @@ function checkAnswer(currentLevel) {
         playSound('wrong');
 
         $('#level-title').text('Game Over, Press A to Restart');
+        $('#restart-button').text('Restart');
 
         $('body').addClass('game-over');
         setTimeout(() => {
@@ -96,6 +115,5 @@ function startOver() {
     gamePattern = [];
     started = true;
 };
-
 
 
